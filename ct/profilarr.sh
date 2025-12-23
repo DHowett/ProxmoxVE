@@ -7,7 +7,7 @@ source <(curl -fsSL https://raw.githubusercontent.com/DHowett/ProxmoxVE/main/mis
 
 APP="Profilarr"
 var_tags="${var_tags:-arr;media}"
-var_cpu="${var_cpu:-2}"
+var_cpu="${var_cpu:-1}"
 var_ram="${var_ram:-512}"
 var_disk="${var_disk:-2}"
 var_os="${var_os:-debian}"

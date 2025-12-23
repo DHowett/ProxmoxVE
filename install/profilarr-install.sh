@@ -36,7 +36,7 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/profilarr
+WorkingDirectory=/opt/profilarr/backend
 ExecStart=/opt/profilarr/backend/.venv/bin/gunicorn --bind 0.0.0.0:6868 --timeout 600 app.main:create_app()
 Restart=always
 
