@@ -1,7 +1,7 @@
-# Copyright (c) 2021-2025 community-scripts ORG
+# Copyright (c) 2021-2025 DHowett ORG
 # Author: tteck (tteckster)
 # Co-Author: MickLesk
-# License: MIT | https://github.com/community-scripts/ProxmoxVE/raw/main/LICENSE
+# License: MIT | https://github.com/DHowett/ProxmoxVE/raw/main/LICENSE
 
 # ==============================================================================
 # INSTALL.FUNC - CONTAINER INSTALLATION & SETUP
@@ -32,8 +32,8 @@ if ! command -v curl >/dev/null 2>&1; then
   apt update >/dev/null 2>&1
   apt install -y curl >/dev/null 2>&1
 fi
-source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/core.func)
-source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/error_handler.func)
+source <(curl -fsSL https://raw.githubusercontent.com/DHowett/ProxmoxVE/main/misc/core.func)
+source <(curl -fsSL https://raw.githubusercontent.com/DHowett/ProxmoxVE/main/misc/error_handler.func)
 load_functions
 catch_errors
 
@@ -55,7 +55,7 @@ verb_ip6() {
     msg_info "Disabling IPv6 (this may affect some services)"
     mkdir -p /etc/sysctl.d
     $STD tee /etc/sysctl.d/99-disable-ipv6.conf >/dev/null <<EOF
-# Disable IPv6 (set by community-scripts)
+# Disable IPv6 (set by DHowett)
 net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
@@ -141,7 +141,7 @@ network_check() {
   fi
 
   # DNS resolution checks for GitHub-related domains (IPv4 and/or IPv6)
-  GIT_HOSTS=("github.com" "raw.githubusercontent.com" "api.github.com" "git.community-scripts.org")
+  GIT_HOSTS=("github.com" "raw.githubusercontent.com" "api.github.com")
   GIT_STATUS="Git DNS:"
   DNS_FAILED=false
 
@@ -197,7 +197,7 @@ EOF
   rm -rf /usr/lib/python3.*/EXTERNALLY-MANAGED
   msg_ok "Updated Container OS"
 
-  source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/tools.func)
+  source <(curl -fsSL https://raw.githubusercontent.com/DHowett/ProxmoxVE/main/misc/tools.func)
 }
 
 # ==============================================================================
@@ -225,7 +225,7 @@ motd_ssh() {
   PROFILE_FILE="/etc/profile.d/00_lxc-details.sh"
   echo "echo -e \"\"" >"$PROFILE_FILE"
   echo -e "echo -e \"${BOLD}${APPLICATION} LXC Container${CL}"\" >>"$PROFILE_FILE"
-  echo -e "echo -e \"${TAB}${GATEWAY}${YW} Provided by: ${GN}community-scripts ORG ${YW}| GitHub: ${GN}https://github.com/community-scripts/ProxmoxVE${CL}\"" >>"$PROFILE_FILE"
+  echo -e "echo -e \"${TAB}${GATEWAY}${YW} Provided by: ${GN}DHowett ORG ${YW}| GitHub: ${GN}https://github.com/DHowett/ProxmoxVE${CL}\"" >>"$PROFILE_FILE"
   echo "echo \"\"" >>"$PROFILE_FILE"
   echo -e "echo -e \"${TAB}${OS}${YW} OS: ${GN}\$(grep ^NAME /etc/os-release | cut -d= -f2 | tr -d '\"') - Version: \$(grep ^VERSION_ID /etc/os-release | cut -d= -f2 | tr -d '\"')${CL}\"" >>"$PROFILE_FILE"
   echo -e "echo -e \"${TAB}${HOSTNAME}${YW} Hostname: ${GN}\$(hostname)${CL}\"" >>"$PROFILE_FILE"
@@ -267,7 +267,7 @@ EOF
     systemctl restart $(basename $(dirname $GETTY_OVERRIDE) | sed 's/\.d//')
     msg_ok "Customized Container"
   fi
-  echo "bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/ct/${app}.sh)\"" >/usr/bin/update
+  echo "bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/DHowett/ProxmoxVE/main/ct/${app}.sh)\"" >/usr/bin/update
   chmod +x /usr/bin/update
 
   if [[ -n "${SSH_AUTHORIZED_KEY}" ]]; then

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Copyright (c) 2021-2025 community-scripts ORG
-# License: MIT | https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/LICENSE
+# Copyright (c) 2021-2025 DHowett ORG
+# License: MIT | https://raw.githubusercontent.com/DHowett/ProxmoxVE/main/LICENSE
 
 # ==============================================================================
 # CORE FUNCTIONS - LXC CONTAINER UTILITIES
@@ -11,7 +11,7 @@
 # execution helpers used throughout the Community-Scripts ecosystem.
 #
 # Usage:
-#   source <(curl -fsSL https://git.community-scripts.org/.../core.func)
+#   source <(curl -fsSL https://git.DHowett.org/.../core.func)
 #   load_functions
 #
 # ==============================================================================
@@ -173,7 +173,7 @@ set_std_mode() {
 #   * DEV_MODE_TRACE: Enable bash set -x tracing
 #   * DEV_MODE_PAUSE: Pause after each msg_info step
 #   * DEV_MODE_BREAKPOINT: Open shell on error instead of cleanup
-#   * DEV_MODE_LOGS: Persist all logs to /var/log/community-scripts/
+#   * DEV_MODE_LOGS: Persist all logs to /var/log/DHowett/
 #   * DEV_MODE_DRYRUN: Show commands without executing
 # - Call this early in script execution
 # ------------------------------------------------------------------------------
@@ -420,7 +420,7 @@ silent() {
   if [[ $rc -ne 0 ]]; then
     # Source explain_exit_code if needed
     if ! declare -f explain_exit_code >/dev/null 2>&1; then
-      source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/error_handler.func)
+      source <(curl -fsSL https://raw.githubusercontent.com/DHowett/ProxmoxVE/main/misc/error_handler.func)
     fi
 
     local explanation
@@ -685,8 +685,8 @@ exit_script() {
 get_header() {
   local app_name=$(echo "${APP,,}" | tr -d ' ')
   local app_type=${APP_TYPE:-ct} # Default to 'ct' if not set
-  local header_url="https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/${app_type}/headers/${app_name}"
-  local local_header_path="/usr/local/community-scripts/headers/${app_type}/${app_name}"
+  local header_url="https://raw.githubusercontent.com/DHowett/ProxmoxVE/main/${app_type}/headers/${app_name}"
+  local local_header_path="/usr/local/DHowett/headers/${app_type}/${app_name}"
 
   mkdir -p "$(dirname "$local_header_path")"
 

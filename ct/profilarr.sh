@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/build.func)
-# Copyright (c) 2021-2025 community-scripts ORG
+source <(curl -fsSL https://raw.githubusercontent.com/DHowett/ProxmoxVE/main/misc/build.func)
+# Copyright (c) 2021-2025 DHowett ORG
 # Author: DHowett
-# License: MIT | https://github.com/community-scripts/ProxmoxVE/raw/main/LICENSE
+# License: MIT | https://github.com/DHowett/ProxmoxVE/raw/main/LICENSE
 # Source: https://github.com/Dictionarry-Hub/prrofilarr
 
 APP="Profilarr"
